@@ -1,0 +1,68 @@
+/dts-v1/;
+
+/ {
+	description = "FIT Image for the Zed";
+	magic = "ITB ZED";
+	#address-cells = <1>;
+	images {
+
+		fdt@1 {
+			description = "Flattened Device Tree blob";
+			data = /incbin/("./system.dtb");
+			type = "flat_dt";
+			arch = "arm";
+			compression = "none";
+		};
+
+		fpga@1 {
+			description = "FPGA";
+			data = /incbin/("./system.bit");
+			type = "fpga";
+			arch = "arm";
+			compression = "none";
+			load = <0xF000000>;
+			hash@1 {
+				algo = "md5";
+			};
+		};
+
+		linux_kernel@1 {
+			description = "Linux";
+			data = /incbin/("./zImage");
+			type = "kernel";
+			arch = "arm";
+			os = "linux";
+			compression = "none";
+			load = <0x8000>;
+			entry = <0x8000>;
+			hash@1 {
+				algo = "md5";
+			};
+		};
+		ramdisk@1 {
+			description = "Ramdisk";
+			data = /incbin/("./rootfs.cpio.gz");
+			type = "ramdisk";
+			arch = "arm";
+			os = "linux";
+			compression = "gzip";
+			hash@1 {
+				algo = "md5";
+			};
+		};
+
+	};
+
+	configurations {
+		default = "config@0";
+		config@0 {
+			description = "Linux default bitfile";
+			fdt = "fdt@1";
+			kernel = "linux_kernel@1";
+			ramdisk = "ramdisk@1";
+			fpga = "fpga@1";
+		};
+
+	};
+};
+

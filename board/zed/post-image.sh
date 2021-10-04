@@ -5,4 +5,9 @@ echo $1
 echo $2
 
 /usr/local/bin/mkbootimage $2/boot.bif $1/boot.bin
-cp $1/boot.bin $1/boot.bin.tmp
+
+cp $2/zed.its $1
+cp $2/system.dtb $1
+cp $2/system.bit $1 
+/usr/bin/mkimage -f $1/zed.its $1/image.ub
+
