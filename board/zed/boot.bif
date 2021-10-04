@@ -1,0 +1,6 @@
+boot:
+{
+  [bootloader] "output/build/uboot-xlnx_rebase_v2021.01/spl/u-boot-spl"
+  "output/build/uboot-xlnx_rebase_v2021.01/u-boot"
+}
+
