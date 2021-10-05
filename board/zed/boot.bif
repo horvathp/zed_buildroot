@@ -1,6 +1,6 @@
-boot:
+all: 
 {
-  [bootloader] "/home/hp/Downloads/zynq_fsbl.elf"
-  "/home/hp/Downloads/u-boot.elf"
+  [bootloader] u-boot-spl.bin
+  u-boot.bin
 }
 

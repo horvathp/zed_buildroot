@@ -4,7 +4,8 @@ echo "Running post-image.sh"
 echo $1
 echo $2
 
-/usr/local/bin/mkbootimage $2/boot.bif $1/boot.bin
+#/usr/local/bin/mkbootimage $2/boot.bif $1/BOOT.BIN
+/usr/local/bin/bootgen -image $2/boot.bif -w -o $1/BOOT.BIN
 
 cp $2/zed.its $1
 cp $2/system.dtb $1
