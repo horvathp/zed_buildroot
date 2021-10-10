@@ -1,6 +1,6 @@
 all: 
 {
-  [bootloader] u-boot-spl.bin
-  u-boot.bin
+  [bootloader] "output/build/uboot-xlnx_rebase_v2021.01/spl/u-boot-spl"
+  [load = 0x04000000] "output/build/uboot-xlnx_rebase_v2021.01/u-boot.bin"
 }
 
